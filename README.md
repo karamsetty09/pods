@@ -13,3 +13,7 @@ from terminal of project folder: pods
 .\vendor\bin\sail up
 
 .\vendor\bin\sail down
+
+## Migrations for table
+
+.\vendor\bin\sail 
