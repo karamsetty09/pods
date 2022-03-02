@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 // adding new podcast to database
-Route::post('/add',  [PodcastsController::class, 'create']);
+Route::post('/add',  [PodcastsController::class, 'store']);
 
 // approve a podcast convert the status from review to published
 Route::post('/{id}', [PodcastsController::class, 'edit']);

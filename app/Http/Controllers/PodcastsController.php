@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Podcasts;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PodcastsController extends Controller
 {
@@ -35,7 +36,7 @@ class PodcastsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request['name'];
     }
 
     /**
@@ -44,9 +45,15 @@ class PodcastsController extends Controller
      * @param  \App\Models\Podcasts  $podcasts
      * @return \Illuminate\Http\Response
      */
-    public function show(Podcasts $podcasts)
+    public function show($id)
     {
-        //
+        $pods = Podcasts::find($id);
+
+        if ($pods) {
+            return $pods;
+        } else {
+            return 'No pods available by id';
+        }
     }
 
     /**
@@ -78,8 +85,9 @@ class PodcastsController extends Controller
      * @param  \App\Models\Podcasts  $podcasts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Podcasts $podcasts)
+    public function destroy($id)
     {
-        //
+        $pod = Podcasts::find($id);
+        return $pod->delete();
     }
 }
