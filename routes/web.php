@@ -18,4 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/podcasts',  [PodcastsController::class, 'index']);
+// adding new podcast to database
+Route::post('/add',  [PodcastsController::class, 'create']);
+
+// approve a podcast convert the status from review to published
+Route::post('/{id}', [PodcastsController::class, 'edit']);
+
+// display all podcasts published with where is published with pagination
+Route::get('/podcasts/published',  [PodcastsController::class, 'index']);
+
+// get a single podcast based on id
+Route::get('/podcast/{id}',  [PodcastsController::class, 'show']);
+
+// update a podcast in laravel
+Route::post('/podcast/{id}', [PodcastsController::class, 'update']);
+
+// Delete a podcast
+Route::post('/podcast/{id}', [PodcastsController::class, 'destroy']);
+
