@@ -14,9 +14,12 @@ from terminal of project folder: pods
 
 .\vendor\bin\sail down
 
+If mysql port is occupied:
+sudo kill `sudo lsof -t -i:3306`
+
 ## Migrations for table
 
-.\vendor\bin\sail artisa migrate
+.\vendor\bin\sail artisan migrate
 
 ## Route end points
 
